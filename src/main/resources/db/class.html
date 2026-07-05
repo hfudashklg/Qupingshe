@@ -1,0 +1,211 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content = "width = device-width,initial-"
+        <style>
+            .pink{
+                background-color:pink;
+                color:white;
+                border:none;
+                padding:8px 16px;
+                cursor:pointer;
+            }
+            button{
+                margin:5px;
+            }
+
+        </style>
+    </head>
+
+
+
+
+
+<button class="pink">按钮1</button> <button>按钮2</button> <button>按钮3</button> <button>按钮4</button>
+
+<script>
+
+    let bts = document.querySelectorAll('button')
+
+    for (let i = 0; i < bts.length; i++) {
+
+        bts[i].addEventListener('click', function () {
+
+            document.querySelector('.pink').className = ''
+
+            this.className = 'pink'
+
+        })
+
+    }
+
+</script>
+
+
+
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>我的个人信息</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .profile-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .info-item {
+            margin-bottom: 15px;
+        }
+        .label {
+            font-weight: bold;
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div id="profileContainer"></div>
+
+    <script>
+        // 真实的个人信息
+        const myInfo = {
+            name: "蔡军",
+            location: "成都市",
+            email: "1780682567@qq.com",
+        };
+
+        // 创建个人信息展示
+        function displayProfile() {
+            const container = document.getElementById('profileContainer');
+            
+            // 创建卡片容器
+            const card = document.createElement('div');
+            card.className = 'profile-card';
+            
+            // 添加标题
+            const title = document.createElement('h1');
+            title.textContent = '我的个人信息';
+            card.appendChild(title);
+            
+            // 添加姓名
+            const nameItem = document.createElement('div');
+            nameItem.className = 'info-item';
+            nameItem.innerHTML = `<span class="label">姓名：</span>${myInfo.name}`;
+            card.appendChild(nameItem);
+    
+            
+            // 添加所在地
+            const locationItem = document.createElement('div');
+            locationItem.className = 'info-item';
+            locationItem.innerHTML = `<span class="label">所在地：</span>${myInfo.location}`;
+            card.appendChild(locationItem);
+            
+            // 添加邮箱
+            const emailItem = document.createElement('div');
+            emailItem.className = 'info-item';
+            emailItem.innerHTML = `<span class="label">邮箱：</span>${myInfo.email}`;
+            card.appendChild(emailItem);
+
+            
+            // 将卡片添加到页面
+            container.appendChild(card);
+        }
+
+        // 调用函数显示信息
+        displayProfile();
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!-- 获取用户输入      2026/03/13第二周
+const input = prompt('请输入用空格或逗号分隔的数字：');
+
+// 处理输入，支持空格或逗号分隔
+const nums = input.split(/[\s,]/)
+  .filter(item => item.trim() !== '') // 过滤空字符串
+  .map(Number); // 转换为数字
+
+// 求和
+const sum = nums.reduce((total, num) => total + num, 0);
+
+// 输出结果
+alert(`求和结果：${sum}`);
+console.log(`求和结果：${sum}`); -->
+
+
+
+
+
+
+
+
+//实验报告1
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript 变量与交互示例</title>
+</head>
+<body>
+    <h1>订单信息输入</h1>
+    
+    <!-- 输入区域 -->
+    <div>
+        <label>商品名称: <input type="text" id="product"></label><br>
+        <label>数量: <input type="number" id="quantity"></label><br>
+        <label>价格: <input type="number" id="price"></label><br>
+        <button onclick="processOrder()">提交订单</button>
+    </div>
+    
+    <!-- 输出区域 -->
+    <div id="output" style="margin-top:20px; padding:10px; border:1px solid #ccc;"></div>
+
+    <script>
+        // 声明常量（不可重新赋值）
+        const TAX_RATE = 0.08;
+        
+        function processOrder() {
+            // 声明变量（可重新赋值）
+            let product = document.getElementById('product').value;
+            let quantity = parseInt(document.getElementById('quantity').value);
+            let price = parseFloat(document.getElementById('price').value);
+            
+            // 计算总价
+            let subtotal = quantity * price;
+            let tax = subtotal * TAX_RATE;
+            let total = subtotal + tax;
+            
+            // 输出结果到页面
+            document.getElementById('output').innerHTML = `
+                <h3>订单详情:</h3>
+                <p>商品: ${product}</p>
+                <p>数量: ${quantity}</p>
+                <p>单价: ¥${price.toFixed(2)}</p>
+                <p>小计: ¥${subtotal.toFixed(2)}</p>
+                <p>税费(8%): ¥${tax.toFixed(2)}</p>
+                <p><strong>总计: ¥${total.toFixed(2)}</strong></p>
+            `;
+            
+            // 同时在控制台输出
+            console.log("订单处理完成:", {product, quantity, price, total});
+        }
+    </script>
+</body>
+</html>
